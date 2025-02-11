@@ -65,14 +65,9 @@ function pause ($message){
 $metarFull = Invoke-WebRequest -uri "https://tgftp.nws.noaa.gov/data/observations/metar/decoded/KBFI.TXT"
 #$metarFull.Content
 
-
+#idk why this wont run outside this conditional. Powershell permissions are weird
 if (2 -eq 2){
     
         $buttonChosen = Show-MessageBox "$metarFull" 'KBFI' -Buttons OK -Icon Warning
         BREAK
     }
-
-#write-host $metarFull
-
-#print $metarFull
-#pause "Press any key to continue"
