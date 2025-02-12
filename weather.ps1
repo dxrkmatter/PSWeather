@@ -48,24 +48,9 @@
 
 }
 
-function pause ($message){
-    # Check if running Powershell ISE
-    if ($psISE)
-    {
-        Add-Type -AssemblyName System.Windows.Forms
-        [System.Windows.Forms.MessageBox]::Show("$message")
-    }
-    else
-    {
-        Write-Host "$message" -ForegroundColor Yellow
-        $x = $host.ui.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-    }
-}
-
 $metarFull = Invoke-WebRequest -uri "https://tgftp.nws.noaa.gov/data/observations/metar/decoded/KBFI.TXT"
-#$metarFull.Content
 
-#idk why this wont run outside this conditional. Powershell permissions are weird
+#idk why this wont run outside a conditional...
 if (2 -eq 2){
     
         $buttonChosen = Show-MessageBox "$metarFull" 'KBFI' -Buttons OK -Icon Warning
