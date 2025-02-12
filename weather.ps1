@@ -1,4 +1,4 @@
-﻿function Show-MessageBox {
+function Show-MessageBox {
   [CmdletBinding(PositionalBinding=$false)]
   param(
     [Parameter(Mandatory, Position=0)]
@@ -53,6 +53,6 @@ $metarFull = Invoke-WebRequest -uri "https://tgftp.nws.noaa.gov/data/observation
 #idk why this wont run outside a conditional...
 if (2 -eq 2){
     
-        $buttonChosen = Show-MessageBox "$metarFull" 'KBFI' -Buttons OK -Icon Warning
+        $buttonChosen = Show-MessageBox "$metarFull" 'KBFI' -Buttons OK -Icon Information
         BREAK
     }
