@@ -31,7 +31,6 @@ function Show-MessageBox {
   elseif ($IsMacOS) {
     $iconClause = if ($Icon -ne 'Information') { 'as ' + $Icon -replace 'Stop', 'critical' }
     $buttonClause = "buttons { $($buttonMap[$Buttons].buttonList -replace '^', '"' -replace '$', '"' -join ',') }"
-
     $defaultButtonClause = 'default button ' + (1 + $defaultIndex)
     if ($null -ne $cancelIndex -and $cancelIndex -ne $defaultIndex) {
       $cancelButtonClause = 'cancel button ' + (1 + $cancelIndex)
@@ -45,14 +44,10 @@ function Show-MessageBox {
     Add-Type -Assembly System.Windows.Forms        
     [System.Windows.Forms.MessageBox]::Show($Message, $Title, $Buttons, $Icon, $defaultIndex * 256).ToString()
   }
-
 }
-
 $metarFull = Invoke-WebRequest -uri "https://tgftp.nws.noaa.gov/data/observations/metar/decoded/KBFI.TXT"
-
 #idk why this wont run outside a conditional...
 if (2 -eq 2){
-    
-        $buttonChosen = Show-MessageBox "$metarFull" 'KBFI' -Buttons OK -Icon Information
-        BREAK
-    }
+    $buttonChosen = Show-MessageBox "$metarFull" 'KBFI' -Buttons OK -Icon Information
+    BREAK
+}
