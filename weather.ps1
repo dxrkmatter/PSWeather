@@ -1,4 +1,4 @@
-function Show-MessageBox {
+function Show-MessageBox{
   [CmdletBinding(PositionalBinding=$false)]
   param(
     [Parameter(Mandatory, Position=0)]
@@ -45,6 +45,7 @@ function Show-MessageBox {
     [System.Windows.Forms.MessageBox]::Show($Message, $Title, $Buttons, $Icon, $defaultIndex * 256).ToString()
   }
 }
+
 $metarFull = Invoke-WebRequest -uri "https://tgftp.nws.noaa.gov/data/observations/metar/decoded/KBFI.TXT"
 #idk why this wont run outside a conditional...
 if (2 -eq 2){
